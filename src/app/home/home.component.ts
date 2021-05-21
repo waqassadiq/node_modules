@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   onLoadServers(){
     // complex calculations
-    this.router.navigate(['servers']);
+    // it's an absolute path
+    this.router.navigate(['/servers']);
   }
 
 }
