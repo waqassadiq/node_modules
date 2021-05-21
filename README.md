@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Route - Absolute vs Relative
+
+An absolute route is specifying its route all the way from the route root, such as /products/2/orders , whereas a relative route is aware of its context. A relative route might therefore look like /orders , given that it is aware of it already being at /products/2 , so the full route would read as /products/2/orders .
