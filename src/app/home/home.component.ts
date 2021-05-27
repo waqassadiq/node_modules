@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   onLoadServers(){
     // complex calculations
     // it's an absolute path
-    this.router.navigate(['/servers']);
+    // routerlink know, in which route you are in
+    // the navigate method doesn't know, where it sit
+    // so we can tell it, where it's resides now
+    // so we sing relatedto: path, we can guide it
+    this.router.navigate(['/servers',{ralateTo: this.ngOnInit}]);
   }
 
 }
