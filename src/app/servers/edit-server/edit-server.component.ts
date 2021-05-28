@@ -24,6 +24,8 @@ export class EditServerComponent implements OnInit {
     console.log(this.route.snapshot.fragment);
 
     // way 2 - making queryParams as observables
+    // we don't need to unsscribe it, 
+    // angular automatically hanldles it
     this.route.queryParams.subscribe();
     this.route.fragment.subscribe();
 
