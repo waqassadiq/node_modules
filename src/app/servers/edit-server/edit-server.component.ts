@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -12,10 +12,18 @@ export class EditServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
   serverName = '';
   serverStatus = '';
+  allowEdit = false;
 
   constructor(private serversService: ServersService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(
+      (queryParam: Params) => {
+        this.allowEdit = queryParam['allowEdit'] === '1' ? true : false;
+      }
+    );
+
     //Way 1 - isn't reactive
     // the following approch is not reactive
     // it woulld only be called, when your component is created, once the values
