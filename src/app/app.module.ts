@@ -25,6 +25,7 @@ const appRoutes: Routes = [
   ]
   },
   { path: 'not-found', component: PageNotFoundComponent},
+  //* ** or wildcard rout shoulld be the last route as routers are look-ed into from top to bottom, if you add it on top, all requests would be redited to it. */
   { path: '**', redirectTo: '/not-found'}
 
 ];
