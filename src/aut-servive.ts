@@ -3,7 +3,7 @@ import { resolve } from "url";
 
 // fake service for now
 export class AuthService{
-    loggedIn = false;
+    private loggedIn = false;
 
     isAuthenticated() {
         const promise = new Promise(
@@ -20,7 +20,7 @@ export class AuthService{
         this.loggedIn = true;
     }
 
-    loutOut(){
+    logout(){
         this.loggedIn = false;
     }
 }
