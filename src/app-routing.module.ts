@@ -8,6 +8,7 @@ import { ServerComponent } from "./app/servers/server/server.component";
 import { ServersComponent } from "./app/servers/servers.component";
 import { UserComponent } from "./app/users/user/user.component";
 import { UsersComponent } from "./app/users/users.component";
+import { AuthService } from "./aut-servive";
 import { AuthGuard } from "./auth-guard-service";
 
 const appRoutes: Routes = [
@@ -15,7 +16,10 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: ':id/:name', component: UserComponent}
     ]},
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+    { path: 'servers', 
+    //canActivate: [AuthGuard], // to protect parent route and it's child
+    canActivateChild: [AuthGuard], // to protect child routers only
+    component: ServersComponent, children: [
       { path: ':id', component: ServerComponent},
       { path: ':id/edit', component: EditServerComponent}
     ]
