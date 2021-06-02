@@ -17,7 +17,6 @@ export class EditServerComponent implements OnInit, CanComponentDeactivate {
   serverStatus = '';
   allowEdit = false;
   changesSaved = false;
-  serverId = 0;
 
   constructor(private serversService: ServersService,
     private route: ActivatedRoute,
@@ -44,18 +43,18 @@ export class EditServerComponent implements OnInit, CanComponentDeactivate {
     this.route.queryParams.subscribe();
     this.route.fragment.subscribe();
     // adding + to convert it to number 
-    this.serverId = +this.route.snapshot.params['id'];
+    const id = +this.route.snapshot.params['id'];
     // Subscribe the route params to update the id if the params change
     /** TODO: I have asked the question Following code doesn't work, look into it later
+      */
     this.route.params.subscribe(
       (params: Params) => {
-       this.serverId = +this.serversService.getServer(+params['id']);
+       this.server = this.serversService.getServer(+params['id']);
       }
     );
-    */
+    
      
-    console.log('serverId::: ' + this.serverId);
-    this.server = this.serversService.getServer(this.serverId);
+    this.server = this.serversService.getServer(id);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
   }

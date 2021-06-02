@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -18,6 +18,14 @@ export class ServerComponent implements OnInit {
 
 
   ngOnInit() {
+
+    // retriving server data using resolver
+    this.route.data.subscribe(
+      (data: Data) => {
+        this.server = data['server'];
+      }
+    );
+    /*
     // to treat the id as a numbere, we added + before it
     const id = +this.route.snapshot.params['id'];
     console.log("serverId: " + id);
@@ -28,6 +36,7 @@ export class ServerComponent implements OnInit {
         this.server = this.serversService.getServer(+params['id']);
       }
     );
+    */
   }
 
   onReloadPage(){
