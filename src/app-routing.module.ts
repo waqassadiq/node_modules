@@ -35,7 +35,8 @@ const appRoutes: Routes = [
  @NgModule({
      imports: [
         // use this strategy to assit the hosting server on prod, to take care the part before the 
-        RouterModule.forRoot(appRoutes, {useHash: true})
+        //RouterModule.forRoot(appRoutes, {useHash: true})
+        RouterModule.forRoot(appRoutes)
      ],
      exports: [RouterModule]
  }) 
