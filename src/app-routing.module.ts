@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ErrorPageComponent } from "./app/error-page/error-page/error-page.component";
 
 import { HomeComponent } from "./app/home/home.component";
 import { PageNotFoundComponent } from "./app/page-not-found/page-not-found.component";
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ]
     },
-    { path: 'not-found', component: PageNotFoundComponent},
+    //{ path: 'not-found', component: PageNotFoundComponent},
+    { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
     //* ** or wildcard rout shoulld be the last route as routers are look-ed into from top to bottom, if you add it on top, all requests would be redited to it. */
     { path: '**', redirectTo: '/not-found'}
   
